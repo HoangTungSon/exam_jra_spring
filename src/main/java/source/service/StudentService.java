@@ -16,6 +16,6 @@ public interface StudentService {
 
     Iterable<Student> findAllByClassRoom(ClassRoom classRoom);
 
-    Page<Student> findAllByClassRoomContaining(String name, Pageable pageable);
+    Page<Student> findAllByClassRoomContaining(String classRoom_name, Pageable pageable);
 
 }

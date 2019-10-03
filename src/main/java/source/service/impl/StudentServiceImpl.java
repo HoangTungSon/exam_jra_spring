@@ -39,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Page<Student> findAllByClassRoomContaining(String name, Pageable pageable) {
-        return studentRepository.findAllByClassRoom_Name(name, pageable);
+    public Page<Student> findAllByClassRoomContaining(String classRoom_name, Pageable pageable) {
+        return studentRepository.findAllByClassRoom_Name(classRoom_name, pageable);
     }
 }
