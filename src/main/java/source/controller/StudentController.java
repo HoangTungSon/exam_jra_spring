@@ -79,12 +79,18 @@ public class StudentController {
     }
 
     @PostMapping("/edit-student")
-    public ModelAndView updateStudent(@ModelAttribute("student") Student student){
-        studentService.save(student);
+    public ModelAndView updateStudent(@ModelAttribute("student") Student student, BindingResult bindingResult){
         ModelAndView modelAndView = new ModelAndView("/student/edit");
-        modelAndView.addObject("student", student);
-        modelAndView.addObject("message", "Student updated successfully");
-        return modelAndView;
+
+        if(!bindingResult.hasErrors()) {
+            studentService.save(student);
+            modelAndView.addObject("student", student);
+            modelAndView.addObject("message", "Student updated successfully");
+            return modelAndView;
+        } else {
+            modelAndView.addObject("message", "Student updated failed");
+            return modelAndView;
+        }
     }
 
     @GetMapping("/delete-student/{id}")
